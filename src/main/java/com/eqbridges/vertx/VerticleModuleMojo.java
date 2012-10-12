@@ -32,46 +32,49 @@ import org.apache.maven.artifact.Artifact;
 import org.apache.maven.model.Resource;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugins.annotations.Component;
-import org.apache.maven.plugins.annotations.LifecyclePhase;
-import org.apache.maven.plugins.annotations.Mojo;
-import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
 
 /**
  * Mojo which assembles a verticle module.
  *
+ * @goal verticle
+ * @execute phase="package"
+ * @requiresDependencyResolution compile+runtime
  */
-@Mojo(name = "verticle", defaultPhase = LifecyclePhase.PACKAGE, threadSafe = true,
-        requiresDependencyResolution = ResolutionScope.RUNTIME)
+@SuppressWarnings("UnusedDeclaration")
 public class VerticleModuleMojo extends AbstractMojo {
     private static final String MOD_JSON = "mod.json";
     private static final String MOD_LIB = "lib";
 
     /**
      * Location of the assembled module.
+     * @parameter expression="${project.build.directory}"
+     * @required
      */
-    @Parameter( defaultValue = "${project.build.directory}", required = true )
+    @SuppressWarnings("UnusedDeclaration")
     private File outputDirectory;
 
     /**
      * The name of the generated verticle.
+     * @parameter expression="${project.groupId}.${project.artifactId}-v${project.version}"
+     * @required
      */
-    @Parameter( defaultValue = "${project.groupId}.${project.artifactId}-v${project.version}", required = true )
+    @SuppressWarnings("UnusedDeclaration")
     private String verticleName;
 
     /**
      * The name of the main class for this verticle module.
-     *
+     * @parameter expression="${project.artifactId}"
+     * @required
      */
-    @Parameter( defaultValue = "${project.artifactId}", required=true)
+    @SuppressWarnings("UnusedDeclaration")
     private String verticleMain;
 
     /**
-  	* The Maven project.
- 	*/
-    @Component
+     * The Maven project.
+     * @parameter expression="${project}"
+     */
+    @SuppressWarnings("UnusedDeclaration")
     private MavenProject project;
 
     public void execute() throws MojoExecutionException {
