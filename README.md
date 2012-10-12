@@ -19,7 +19,7 @@ $ mvn install:install-file \
 ```
 
 ### Configuration
-After it has been successfully installed locally, you'll need to configure it in your vert.x project's POM file.  Here's an example configuration that shows all configuration options with their defaults. All options as described in the module manual are supported.  (Visit that documentation)[http://vertx.io/mods_manual.html] for explanations of their usage.  None of the options are required.
+After it has been successfully installed locally, you'll need to configure it in your vert.x project's POM file.  Here's an example configuration that shows all configuration options with their defaults. All options as described in the module manual are supported.  [Visit that documentation](1) for explanations of their usage.  None of the options are required.
 
 ```xml
 <project>
@@ -84,4 +84,16 @@ $ mvn process-resources verticle:assemble
 * Add option to zip up module folder for easier release/deploy.
 * Add capability to create a resource module, shared by other modules.
 
+## More Information
 
+* [vert.x Modules Manual](1)
+* [Maven MOJO API Spec](2)
+* [Installing Maven Plugins](3)
+
+## Feedback
+
+Questions, comments, issues are always welcome.  Thanks.
+
+[1]: http://vertx.io/mods_manual.html
+[2]: http://maven.apache.org/developers/mojo-api-specification.html
+[3]: http://maven.apache.org/plugins/maven-install-plugin/usage.html
