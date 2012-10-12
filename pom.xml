@@ -10,6 +10,14 @@
   <name>verticle-archive Maven Plugin</name>
   <url>http://maven.apache.org</url>
 
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <mavenVersion>2.0.6</mavenVersion>
@@ -22,12 +30,19 @@
     <maven>${mavenVersion}</maven>
   </prerequisites> 
 
+  <scm>
+    <connection>scm:git:git@github.com:ebridges/verticle-archive.git</connection>
+    <url>https://github.com/ebridges/verticle-archive.git</url>
+    <developerConnection>scm:git:git@github.com:ebridges/verticle-archive.git</developerConnection>
+  </scm>
 
-  <contributors>
-    <contributor>
+  <developers>
+    <developer>
+      <id>ebridges</id>
       <name>Edward Q. Bridges</name>
-    </contributor>
-  </contributors>
+      <email>vertx@eqbridges.com</email>
+    </developer>
+  </developers>
 
   <dependencies>
     <dependency>
