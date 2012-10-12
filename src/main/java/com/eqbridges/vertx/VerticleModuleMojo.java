@@ -54,7 +54,7 @@ import org.vertx.java.core.json.JsonObject;
  * Mojo which assembles a verticle module.
  *
  * @goal assemble
- * @phase=package
+ * @phase package
  * @requiresDependencyResolution compile+runtime
  * @threadSafe
  */
@@ -244,7 +244,7 @@ public class VerticleModuleMojo extends AbstractMojo {
     }
 
     private String modJson() {
-        Map<String, Object> params = new HashMap<String, Object>();
+        Map<String, Object> params = new HashMap<>();
 
         if(null != verticleMain && !verticleMain.isEmpty()) {
             getLog().info(format("Config param [%s]:[%s]", "main", verticleMain));
