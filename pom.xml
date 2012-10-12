@@ -8,7 +8,7 @@
     <packaging>maven-plugin</packaging>
 
     <name>vert.x verticle assembly mojo</name>
-    <url>https://github.com/ebridges/verticle-archive</url>
+    <url>https://github.com/ebridges/verticle-maven-plugin</url>
 
     <licenses>
         <license>
@@ -78,9 +78,9 @@
     </dependencies>
 
     <scm>
-        <connection>scm:git:git@github.com:ebridges/verticle-archive.git</connection>
-        <url>https://github.com/ebridges/verticle-archive.git</url>
-        <developerConnection>scm:git:git@github.com:ebridges/verticle-archive.git</developerConnection>
+        <connection>scm:git:git@github.com:ebridges/verticle-maven-plugin.git</connection>
+        <url>https://github.com/ebridges/verticle-maven-plugin.git</url>
+        <developerConnection>scm:git:git@github.com:ebridges/verticle-maven-plugin.git</developerConnection>
     </scm>
 
     <developers>
