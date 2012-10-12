@@ -77,9 +77,9 @@
     </dependencies>
 
     <scm>
-        <connection>scm:git:git@github.com:ebridges/verticle-maven-plugin.git</connection>
-        <url>https://github.com/ebridges/verticle-maven-plugin.git</url>
-        <developerConnection>scm:git:git@github.com:ebridges/verticle-maven-plugin.git</developerConnection>
+      <connection>scm:git:ssh://github.com/ebridges/${project.artifactId}.git</connection>
+      <url>http://github.com/ebridges/${project.artifactId}</url>
+      <developerConnection>scm:git:ssh://git@github.com/ebridges/${project.artifactId}.git</developerConnection>
     </scm>
 
     <developers>
