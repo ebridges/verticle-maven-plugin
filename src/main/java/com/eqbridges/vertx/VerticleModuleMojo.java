@@ -26,7 +26,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.model.Resource;
@@ -92,11 +94,12 @@ public class VerticleModuleMojo extends AbstractMojo {
         copyResources(project.getResources(), verticleFolder);
 
         //noinspection unchecked
-        copyDependencies(project.getRuntimeArtifacts(), verticleFolder);
+        Set artifacts = project.getDependencyArtifacts();
+        //noinspection unchecked
+        copyDependencies(artifacts, verticleFolder);
     }
 
-
-    private void copyDependencies(List<Artifact> dependencies, File verticleFolder) throws MojoExecutionException {
+    private void copyDependencies(Collection<Artifact> dependencies, File verticleFolder) throws MojoExecutionException {
         File verticleLibFolder = new File(verticleFolder, MOD_LIB);
         if(!verticleLibFolder.exists()) {
             if(!verticleLibFolder.mkdirs()) {
@@ -105,15 +108,26 @@ public class VerticleModuleMojo extends AbstractMojo {
         }
         for(Artifact dependency : dependencies) {
             if(null != dependency && null != dependency.getFile()) {
-                File dependencyFile = dependency.getFile();
-                try {
-                    getLog().info(format("Copying dependency: [%s] -> [%s]", dependencyFile, verticleLibFolder));
-                    copyFileToDirectory(dependencyFile, verticleLibFolder);
-                } catch (IOException e) {
-                    throw new MojoExecutionException("unable to copy dependency ("+dependencyFile+") to ("+verticleLibFolder+"): " + e.getMessage());
+                if(confirmDependencyScope(dependency.getScope())) {
+                    File dependencyFile = dependency.getFile();
+                    try {
+                        getLog().info(format("Copying dependency: [%s][%s] -> [%s]", dependencyFile, dependency.getScope(), verticleLibFolder));
+                        copyFileToDirectory(dependencyFile, verticleLibFolder);
+                    } catch (IOException e) {
+                        throw new MojoExecutionException("unable to copy dependency ("+dependencyFile+") to ("+verticleLibFolder+"): " + e.getMessage());
+                    }
                 }
             }
         }
+    }
+
+    private boolean confirmDependencyScope(String scope) {
+        if(null != scope) {
+            if(!scope.isEmpty()) {
+                return scope.equals("runtime") || scope.equals("compile");
+            }
+        }
+        return false;
     }
 
     private void copyResources(List<Resource> resources, File verticleFolder) throws MojoExecutionException {
