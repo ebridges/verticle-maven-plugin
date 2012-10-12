@@ -92,8 +92,9 @@ $ mvn process-resources verticle:assemble
 
 ## Feedback
 
-Questions, comments, issues are always welcome.  Thanks.
+Questions, comments, issues are always welcome.  Please [open a ticket](4). 
 
 [1]: http://vertx.io/mods_manual.html
 [2]: http://maven.apache.org/developers/mojo-api-specification.html
 [3]: http://maven.apache.org/plugins/maven-install-plugin/usage.html
+[4]: https://github.com/ebridges/verticle-maven-plugin/issues
